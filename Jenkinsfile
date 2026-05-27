@@ -14,7 +14,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO.git'
+                git 'https://github.com/iter-palak-goyal/SnakeGame-SpringBoot.git'
             }
         }
 
