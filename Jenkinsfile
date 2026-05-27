@@ -26,15 +26,15 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                sh '/opt/homebrew/bin/docker build -t $IMAGE_NAME .'
             }
         }
 
         stage('Stop Old Container') {
             steps {
                 sh '''
-                docker stop $CONTAINER_NAME || true
-                docker rm $CONTAINER_NAME || true
+                /opt/homebrew/bin/docker stop $CONTAINER_NAME || true
+                /opt/homebrew/bin/docker rm $CONTAINER_NAME || true
                 '''
             }
         }
@@ -42,7 +42,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
-                docker run -d \
+                /opt/homebrew/bin/docker run -d \
                 --name $CONTAINER_NAME \
                 -p 9090:8080 \
                 $IMAGE_NAME
